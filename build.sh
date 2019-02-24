@@ -3,7 +3,9 @@ pacman -Syu sed grep tar --noconfirm
 
 ROOT=/tmp/root
 mkdir -p $ROOT/var/lib/pacman
-pacman -r $ROOT -Syy bash pacman --noconfirm
+pacman -r $ROOT -Syy bzip2 gnutls libassuan libgcrypt libgpg-error libksba npth pinentry readline sqlite --noconfirm
+pacman -r $ROOT -S --noscriptlet gnupg --noconfirm
+pacman -r $ROOT -S bash pacman --noconfirm
 rm -r $ROOT/usr/share/man/*
 ls -d $ROOT/usr/share/locale/* | egrep -v "en_U|alias" | xargs rm -rf
 ln -s /usr/share/zoneinfo/UTC $ROOT/etc/localtime
